@@ -16,14 +16,11 @@
         <p>{{ club.start_time }} - {{ club.end_time }} </br></p>
         <p>{{ club.location|linebreaksbr }}</p>
         <p>{{ club.description|linebreaksbr }}</p>
-        {% if user.is_authenticated %}
         <div>
             <a href="{% url 'post_new' club.pk %}" class="my-link">
                 + Add Comment
-                {% include './icons/file-earmark-plus.svg' %}
             </a>
         </div>
-        {% endif %}
         {% for post in posts %}
             </br>
             <div class="outlined">
