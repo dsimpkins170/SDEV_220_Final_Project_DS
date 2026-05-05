@@ -8,14 +8,15 @@
             </time>
         {% endif %}
         <h2>{{ club.title }}</h2>
-        <p>Interest: {{ club.interest }}</p>
+        <p><strong>Interested:</strong> {{ club.interest }}</p>
         <form action="" method="post">
             {% csrf_token %}
             <button type="submit" name="add_interest" class="btn btn-primary" value="1">Add Interest</button>
         </form></br>
-        <p>{{ club.days }}: {{ club.start_time }} - {{ club.end_time }} </br></p>
-        <p>Location: {{ club.location|linebreaksbr }}</p>
-        <p>Sponsor: {{ club.sponsor |linebreaksbr }}</p>
+        <p><strong>Days:</strong> {{ club.days }}</p>
+        <p><strong>Time:</strong> {{ club.start_time }} - {{ club.end_time }}</p>
+        <p><strong>Location:</strong> {{ club.location }}</p>
+        <p><strong>Sponsor:</strong> {{ club.sponsor |linebreaksbr }}</p>
         <p>{{ club.description|linebreaksbr }}</p>
         <div>
             <a href="{% url 'post_new' club.pk %}" class="my-link">
@@ -24,7 +25,7 @@
         </div>
         {% for post in posts %}
             </br>
-            <div class="outlined">
+            <div class="club-box">
                 <p>{{ post.text }}</p>
                 <small>By {{ post.authors }} on {{ post.created_date }}</small>
                 <a href="{% url 'reply_new' post.pk %}" class="reply-link">Reply</a>

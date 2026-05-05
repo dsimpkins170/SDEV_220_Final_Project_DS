@@ -10,16 +10,23 @@
     </form>
     <a href="{% url 'club_new' %}" class="btn btn-primary">Add club</a></br></br></br></br>
     {% for club in clubs %}
-        <div class="outlined">
-            <article class="club">
-                <time class="date">
-                    {{ club.published_date }}
-                </time>
-                <h2><a href="{% url 'club_detail' pk=club.pk %}">{{ club.title }}</a></h2>
-                <p>Interest: {{ club.interest|linebreaksbr }}</p>
-                <p>{{ club.days }}: {{ club.start_time }} - {{ club.end_time }} </br></p>
-                <p>{{ club.location|linebreaksbr }}</p>
-            </article>
+        <div class="club-box">
+        <article class="club">
+            <time class="date">
+            {{ club.published_date }}
+            </time>
+
+            <h2>
+            <a href="{% url 'club_detail' club.pk %}">
+                {{ club.title }}
+                </a>
+            </h2>
+
+            <p><strong>Interested:</strong> {{ club.interest }}</p>
+            <p><strong>Days:</strong> {{ club.days }}</p>
+            <p><strong>Time:</strong> {{ club.start_time }} - {{ club.end_time }}</p>
+            <p><strong>Location:</strong> {{ club.location }}</p>
+        </article>
         </div></br>
     {% endfor %}
 {% endblock %}
